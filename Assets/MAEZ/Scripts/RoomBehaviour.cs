@@ -12,13 +12,14 @@ public class RoomBehaviour : MonoBehaviour
     
     [SerializeField] public bool isHallway = false;
 
-    public GameObject[] Clutter;
+    [SerializeField] private bool GenerateClutter = false;
+    [SerializeField] private  GameObject[] Clutter;
 
     public void UpdateRoom(bool[] status)
     {
         if (isHallway)
         {
-            //if hallway shape is assigned, return else continue and make a room
+            //if hallway shape is assigned, return. else continue and make a room
             if (UpdateHallway(status))
             {
                 return;
@@ -132,23 +133,30 @@ public class RoomBehaviour : MonoBehaviour
 
     public void AddClutter()
     {
-        if (Clutter.Length == 0)
+        if (Clutter.Length <= 2)
         {
             return;
         }
-        //randomly add clutter to the room
-        for (int i = 0; i < Clutter.Length; i++)
+        if (GenerateClutter)
         {
-            if (Random.Range(0, 100) < 50)
+            Debug.Log("Adding Clutter");
+            for (int i = 0; i < Clutter.Length; i++)
             {
-                Clutter[i].SetActive(true);
+                if (Random.Range(0, 100) < 50)
+                {
+                    Clutter[i].SetActive(true);
+                }
+                else{
+                    Clutter[i].SetActive(false);
+                    Destroy(Clutter[i]);
+                }
             }
         }
-        //delete the clutter that is not active
-        for (int i = 0; i < Clutter.Length; i++)
+        else
         {
-            if (Clutter[i].activeSelf == false)
+            for (int i = 0; i < Clutter.Length; i++)
             {
+                Clutter[i].SetActive(false);
                 Destroy(Clutter[i]);
             }
         }
