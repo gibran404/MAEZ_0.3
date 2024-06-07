@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class DungeonGenerator : MonoBehaviour
 {
@@ -55,6 +56,14 @@ public class DungeonGenerator : MonoBehaviour
 
         Debug.Log("PathCount: " + PathCount);
         Debug.Log("RoomCount: " + RoomCount);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            SceneManager.LoadScene("MAEZ");
+        }
     }
 
     void ResetDungeon()

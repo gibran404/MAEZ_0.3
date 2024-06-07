@@ -112,6 +112,8 @@ MonoBehaviour:
   - {fileID: 9085911675548714263}
   Segments: []
   isHallway: 0
+  GenerateClutter: 0
+  Clutter: []
 --- !u!1 &1734692073221597062
 GameObject:
   m_ObjectHideFlags: 0
@@ -2851,7 +2853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8954332495059833843, guid: cbc7c4f6efc57b74d861e67f67a1c523, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8
+      value: -7.98
       objectReference: {fileID: 0}
     - target: {fileID: 8954332495059833843, guid: cbc7c4f6efc57b74d861e67f67a1c523, type: 3}
       propertyPath: m_LocalRotation.w
