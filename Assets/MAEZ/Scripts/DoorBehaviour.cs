@@ -8,7 +8,7 @@ public class DoorBehaviour : MonoBehaviour
     [SerializeField] private BoxCollider colliderFront = null;
     [SerializeField] private BoxCollider colliderBack = null;
 
-    [SerializeField] private Animator myDoor = null;
+    [SerializeField] private Animator DoorAnimator = null;
     [SerializeField] private bool isOpenedFront = false;
     [SerializeField] private bool isOpenedBack = false;
     [SerializeField] private bool isClosed = true;
@@ -19,7 +19,7 @@ public class DoorBehaviour : MonoBehaviour
 
     void Start()
     {
-        myDoor = GetComponent<Animator>();
+        DoorAnimator = GetComponent<Animator>();
         isOpenedBack = false;
         isOpenedFront = false;
         isClosed = true;
@@ -49,13 +49,13 @@ public class DoorBehaviour : MonoBehaviour
                 Debug.Log("E is pressed");
                 if (isOpenedFront)
                 {
-                    myDoor.Play("DoorCloseFront", 0, 0.0f);
+                    DoorAnimator.Play("DoorCloseFront", 0, 0.0f);
                     isOpenedFront = false;
                     isClosed = true;
                 }
                 else if (isOpenedBack)
                 {
-                    myDoor.Play("DoorCloseBack", 0, 0.0f);
+                    DoorAnimator.Play("DoorCloseBack", 0, 0.0f);
                     isOpenedBack = false;
                     isClosed = true;
                 }
@@ -64,14 +64,14 @@ public class DoorBehaviour : MonoBehaviour
                     Debug.Log("Opening door");
                     if (colliderFront.bounds.Contains(other.transform.position))
                     {
-                        myDoor.Play("DoorOpenFront", 0, 0.0f);
+                        DoorAnimator.Play("DoorOpenFront", 0, 0.0f);
                         Debug.Log("Door opened from front");
                         isOpenedFront = true;
                         isClosed = false;
                     }
                     else if (colliderBack.bounds.Contains(other.transform.position))
                     {
-                        myDoor.Play("DoorOpenBack", 0, 0.0f);
+                        DoorAnimator.Play("DoorOpenBack", 0, 0.0f);
                         Debug.Log("Door opened from back");
                         isOpenedBack = true;
                         isClosed = false;
